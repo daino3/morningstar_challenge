@@ -1,17 +1,10 @@
 class Store
   attr_reader :registers, :customers, :time
 
-  def initialize(file)
-    @file  = file
+  def initialize(registers, customers)
+    @registers = registers
+    @customers = customers
     @time  = 0
-    parse_instructions
-  end
-
-  def parse_instructions
-    instructions  = Parser.parse(@file)
-    num_registers = instructions.shift[0].to_i
-    @registers  ||= create_registers(num_registers)
-    @customers  ||= create_customers(instructions)
   end
 
   def run!
@@ -21,22 +14,6 @@ class Store
       @time += 1
     end
     @time
-  end
-
-  def create_registers(num)
-    num.times.map do |number|
-      number + 1 == num ? Register.new(TRAINING) : Register.new(NORMAL) #last register is training reg
-    end
-  end
-
-  def create_customers(instructions)
-   instructions.map do |data|
-     hash = {}
-     hash[:type]  = data[0]
-     hash[:arrival_time] = data[1].to_i
-     hash[:items] = data[2].to_i
-     Customer.new(hash)
-   end 
   end
 
   def all_customers_served?

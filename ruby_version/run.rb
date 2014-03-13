@@ -1,10 +1,10 @@
 load File.expand_path('../config/environment.rb', __FILE__)
 
-store1 = Store.new(File.open(EXAMPLE_1))
-store2 = Store.new(File.open(EXAMPLE_2))
-store3 = Store.new(File.open(EXAMPLE_3))
-store4 = Store.new(File.open(EXAMPLE_4))
-store5 = Store.new(File.open(EXAMPLE_5))
+store1 = InstructionsParser.new(File.open(EXAMPLE_1)).create_store
+store2 = InstructionsParser.new(File.open(EXAMPLE_2)).create_store
+store3 = InstructionsParser.new(File.open(EXAMPLE_3)).create_store
+store4 = InstructionsParser.new(File.open(EXAMPLE_4)).create_store
+store5 = InstructionsParser.new(File.open(EXAMPLE_5)).create_store
 
 def run_app(num, store)
   puts "#{num}) Finished at #{store.run!} minutes!"
