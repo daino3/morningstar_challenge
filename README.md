@@ -40,7 +40,9 @@ Input is in the form of a single integer (number of registers), followed by a li
 For the following input file: 
 
 1 
+
 A 1 2 
+
 A 2 1 
 
 The following highlights occur: 
