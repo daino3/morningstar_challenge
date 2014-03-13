@@ -1,0 +1,5 @@
+EXAMPLE_1 = 'config/instructions/example_one.txt'
+EXAMPLE_2 = 'config/instructions/example_two.txt'
+EXAMPLE_3 = 'config/instructions/example_three.txt'
+EXAMPLE_4 = 'config/instructions/example_four.txt'
+EXAMPLE_5 = 'config/instructions/example_five.txt'

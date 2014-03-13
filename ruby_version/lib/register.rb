@@ -2,14 +2,31 @@ class Register
   attr_reader :speed, :line
 
   def initialize(speed)
-    @speed = speed
+    @speed = 1.0/speed
     @line  = []
-    @wait  = 0
   end
 
- def serve_customer(customer)
-   customer.ring_item
-   customer.time += 1
- end
+  def serve_current_customer
+    return if empty?
+    customer = @line.first
+    customer.ring_item(@speed)
+    @line.shift if customer.served
+  end
+
+  def total_wait
+    @line.map(&:items).inject(:+) # in minutes
+  end
+
+  def last_customer_items
+    !empty? ? @line.last.items : 0
+  end
+
+  def line_length
+    @line.length
+  end
+
+  def empty?
+    @line.empty?
+  end
 
 end
