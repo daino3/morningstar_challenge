@@ -1,4 +1,9 @@
 ### MorningStar challenge
+Author: Dain Hall
+
+Note from author: Implemenation done in both ruby and java. Ruby version was to
+get logic and structure to be translated into Java-based version (first time
+with Java).
 
 ### Overview:
 You are to write a program to implement a grocery store / cashier line simulation. This program should read input from a file, and print the resulting score to the console. (The program should be a console-only program.) The program should take a single command line parameter, the name of the input file.
