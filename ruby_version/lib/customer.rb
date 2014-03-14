@@ -9,13 +9,13 @@ class Customer
   end
 
   def get_in_line(store)
-    if @type == TYPE_A
+    case @type
+    when TYPE_A
       register = store.shortest_line
-      register.line << self
-    else
+    when TYPE_B
       register = store.last_customer_with_least_items
-      register.line << self
     end
+    register.line << self
   end
 
   def ring_item(speed)

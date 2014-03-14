@@ -6,10 +6,6 @@ class InstructionsParser
     @num_regs = @data.shift[0].to_i
   end
 
-  def create_store
-    Store.new(create_registers, create_customers)
-  end
-
   def parse
     separator  = " "
     file_data  = []
@@ -19,6 +15,10 @@ class InstructionsParser
     file_data
   end
 
+  def create_store
+    Store.new(create_registers, create_customers)
+  end
+  
   def create_registers
     @num_regs.times.map do |number|
       number + 1 == @num_regs ? Register.new(TRAINING) : Register.new(NORMAL) #last register is training reg
