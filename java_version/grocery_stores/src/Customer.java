@@ -1,3 +1,4 @@
+
 public class Customer {
     public String type;
     public double items;
@@ -16,5 +17,25 @@ public class Customer {
       if (items <= 0) {
         served = true;
       }
+    }
+
+    public void getInLine(Store store) {
+        Register register;
+
+        int customerType = 0;
+
+        if (type == "A") customerType = 1;
+        if (type == "B") customerType = 2;
+
+        switch (customerType) {
+            case 1:
+                register = (Register) store.shortestLine();
+                register.addCustomer(this);
+                break;
+            case 2:
+                register = (Register) store.lastCustomerWithLeastItems();
+                register.addCustomer(this);
+                break;
+        }
     }
 }
