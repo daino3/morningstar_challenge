@@ -60,10 +60,7 @@ public class Store {
 
         while(it.hasNext()) {
             Register register = (Register) it.next();
-
-            if (register.lineLength() < minimumLine.lineLength()) {
-                minimumLine = register;
-            }
+            if (register.lineLength() < minimumLine.lineLength()) minimumLine = register;
         }
         return minimumLine;
     }
@@ -74,10 +71,7 @@ public class Store {
 
         while(it.hasNext()) {
             Register register = (Register) it.next();
-
-            if (register.lastCustomerItems() < leastItems.lastCustomerItems()) {
-                leastItems = register;
-            }
+            if (register.lastCustomerItems() < leastItems.lastCustomerItems()) leastItems = register;
         }
         return leastItems;
     }
@@ -85,9 +79,7 @@ public class Store {
     public void serviceCustomers() {
         Iterator it   = registers.iterator();
 
-        if (allRegistersEmpty()) {
-            return;
-        }
+        if (allRegistersEmpty()) return;
         else while (it.hasNext()) {
             Register register = (Register) it.next();
             register.serveCurrentCustomer();
@@ -100,8 +92,7 @@ public class Store {
 
         while(it.hasNext()) {
             Register register = (Register) it.next();
-
-            if (!register.customers.isEmpty()) empty = false;
+            if (!register.isEmpty()) empty = false;
         }
         return empty;
     }

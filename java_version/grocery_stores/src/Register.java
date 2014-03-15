@@ -11,9 +11,7 @@ public class Register {
 
     public double getSpeed() { return speed; }
 
-    public void addCustomer(Customer x) {
-      customers.add(x);
-    }
+    public void addCustomer(Customer x) { customers.add(x); }
 
     public void serveCurrentCustomer() {
       if (customers.isEmpty()) return;

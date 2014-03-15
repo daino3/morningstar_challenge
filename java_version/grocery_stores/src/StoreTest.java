@@ -84,4 +84,12 @@ public class StoreTest {
         Register minNumItems = (Register) storeTest.lastCustomerWithLeastItems();
         assertEquals("It returns the register with the minimum number of customers", minNumItems, registerA);
     }
+
+    @Test
+    public void serviceCustomersTest() {
+        registerTest.addCustomer(customerTest);
+        storeTest.serviceCustomers();
+        double newItemCount = customerTest.items;
+        assertEquals("It reduces the items of the customers in each register", newItemCount, 4.0);
+    }
 }
