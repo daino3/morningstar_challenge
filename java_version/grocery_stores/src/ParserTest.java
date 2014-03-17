@@ -37,7 +37,9 @@ public class ParserTest {
         test.parse();
         test.createCustomers();
         Customer results = test.customers.get(0);
-        assertEquals("It creates a customer and stores it with the correct type", results.type, "A");
+        assertEquals("It creates a customer with the correct type", results.type, "A");
+        assertEquals(results.items, 2.0, 0.0);
+        assertEquals("It creates a customer with the correct arrival time", results.arrivalTime, 1);
     }
 
     @Test

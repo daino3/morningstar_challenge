@@ -70,8 +70,8 @@ public class Parser {
             String[] splitData = customerData.split("\\s+");
 
             String type = splitData[0];
-            double items = Integer.parseInt(splitData[1]);
-            int arrivalTime = Integer.parseInt(splitData[2]);
+            int arrivalTime = Integer.parseInt(splitData[1]);
+            double items    = Double.parseDouble(splitData[2]);
             Customer customer = new Customer(type, items, arrivalTime);
             customers.add(customer);
         }

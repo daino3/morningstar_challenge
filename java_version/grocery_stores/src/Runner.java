@@ -11,29 +11,41 @@ public class Runner {
         /*for(int i = 0; i < examples.length; i++) {*/
             Parser parser = new Parser(examples[0]);
             Store store = parser.main();
-            printCustomers(store.customers);
-            printRegisters(store.registers);
+
+            store.time = 1;
+
+            System.out.println(store.time);
+            store.placeCustomersInLine();
+
+            Register loneRegister = (Register) store.registers.get(0);
+
+            System.out.println(loneRegister.customers);
+
+            store.serviceCustomers();
+
+            printRegisterCustomers(store);
             /*int time = store.main();
             System.out.println(time);
             System.out.println("Example" + 1 + ": " + time + " minutes");*/
         /*}*/
     }
 
-    public void printCustomers(ArrayList<Customer> list) {
-        for (int i = 0; i < list.size(); i++) {
-            Customer customer = list.get(i);
-            System.out.println("Type: " + customer.type);
-            System.out.println("Items: " + customer.items);
-            System.out.println("Arrival Time: " + customer.arrivalTime);
-            System.out.println("Served?: " + customer.served);
+    public void printRegisterCustomers(Store store) {
+        for (int i = 0; i < store.registers.size(); i++) {
+            Register register = (Register) store.registers.get(i);
+            for (int c = 0; c < register.customers.size(); c++) {
+                Customer customer = (Customer) register.customers.get(c);
+                printCustomer(customer);
+            }
         }
     }
 
-    public void printRegisters(ArrayList<Register> list) {
-        for (int i = 0; i < list.size(); i++) {
-            Register register = list.get(i);
-            System.out.println("Speed: " + register.getSpeed());
-        }
+    public void printCustomer(Customer customer) {
+        System.out.println("Type: " + customer.type);
+        System.out.println("Items: " + customer.items);
+        System.out.println("Arrival Time: " + customer.arrivalTime);
+        System.out.println("Served?: " + customer.served);
+
     }
 
 }

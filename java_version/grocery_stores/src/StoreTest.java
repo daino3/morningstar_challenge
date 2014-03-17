@@ -46,7 +46,7 @@ public class StoreTest {
 
         Store store = new Store(registers, customers);
         int elapsedTime = store.main();
-        assertEquals("It returns the correct time", 7, elapsedTime);
+        assertEquals("It returns the correct time", 10, elapsedTime);
     }
 
     @Test
