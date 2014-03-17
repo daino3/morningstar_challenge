@@ -1,5 +1,5 @@
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
     public String type;
     public double items;
     public int arrivalTime;
@@ -37,5 +37,11 @@ public class Customer {
                 register.addCustomer(this);
                 break;
         }
+    }
+
+    @Override
+    public int compareTo(Customer customer) {
+        int value = type.compareTo(customer.type);
+        return (value == 0) ? Double.compare(items, customer.items) : value;
     }
 }

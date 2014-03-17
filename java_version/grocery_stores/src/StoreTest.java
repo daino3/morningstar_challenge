@@ -14,19 +14,39 @@ public class StoreTest {
     public ArrayList registerList;
 
     @Before public void initialize() {
-        customerTest = new Customer("A", 5, 1);
-        registerTest = new Register(1);
+        customerTest = new Customer("A", 4, 1);
         customerList = new ArrayList();
-        registerList = new ArrayList();
         customerList.add(customerTest);
+
+        registerTest = new Register(1);
+        registerList = new ArrayList();
         registerList.add(registerTest);
-        storeTest    = new Store(registerList, customerList);
+
+        storeTest = new Store(registerList, customerList);
     }
 
     @Test
     public void storeDataTest() {
         assertEquals("Returns the register list", storeTest.registers.get(0), registerTest);
         assertEquals("Returns the customer list", storeTest.customers.get(0), customerTest);
+    }
+
+    @Test
+    public void mainTest() {
+        Customer customerTestA = new Customer("A", 1, 2);
+        Customer customerTestB = new Customer("A", 2, 1);
+
+        ArrayList customers = new ArrayList();
+        customers.add(customerTestA);
+        customers.add(customerTestB);
+
+        Register register = new Register(0.5);
+        ArrayList registers = new ArrayList();
+        registers.add(register);
+
+        Store store = new Store(registers, customers);
+        int elapsedTime = store.main();
+        assertEquals("It returns the correct time", 7, elapsedTime);
     }
 
     @Test
@@ -90,6 +110,6 @@ public class StoreTest {
         registerTest.addCustomer(customerTest);
         storeTest.serviceCustomers();
         double newItemCount = customerTest.items;
-        assertEquals("It reduces the items of the customers in each register", newItemCount, 4.0);
+        assertEquals("It reduces the items of the customers in each register", newItemCount, 3.0);
     }
 }
