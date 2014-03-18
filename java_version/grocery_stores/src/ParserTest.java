@@ -20,8 +20,15 @@ public class ParserTest {
     @Test
     public void parserDataTest() {
         test.parse();
-        String results = test.instructions.get(1);
-        assertEquals("It opens the correct files", "A 1 2", results);
+
+        String numReg = test.instructions.get(0);
+        assertEquals("It opens the correct files", "1", numReg);
+
+        String firstCustomer = test.instructions.get(1);
+        assertEquals("It opens the correct files", "A 1 2", firstCustomer);
+
+        String secondCustomer = test.instructions.get(2);
+        assertEquals("It opens the correct files", "A 2 1", secondCustomer);
     }
 
     @Test
@@ -36,10 +43,16 @@ public class ParserTest {
     public void createCustomersTest() {
         test.parse();
         test.createCustomers();
-        Customer results = test.customers.get(0);
-        assertEquals("It creates a customer with the correct type", results.type, "A");
-        assertEquals(results.items, 2.0, 0.0);
-        assertEquals("It creates a customer with the correct arrival time", results.arrivalTime, 1);
+
+        Customer customerA = test.customers.get(0);
+        assertEquals("It creates the first customer with the correct type", customerA.type, "A");
+        assertEquals(customerA.items, 2.0, 0.0);
+        assertEquals("It creates the first customer with the correct arrival time", customerA.arrivalTime, 1);
+
+        Customer customerB = test.customers.get(1);
+        assertEquals("It creates the second customer with the correct type", customerB.type, "A");
+        assertEquals(customerB.items, 1.0, 0.0);
+        assertEquals("It creates the second customer with the correct arrival time", customerB.arrivalTime, 2);
     }
 
     @Test
@@ -47,7 +60,7 @@ public class ParserTest {
         Store store = test.main();
         ArrayList<Register> registers = store.registers;
         ArrayList<Customer> customers = store.customers;
-        assertEquals("It creates a customer and stores it with the correct type", registers.size(), 1);
-        assertEquals("It creates a customer and stores it with the correct type", customers.size(), 2);
+        assertEquals("It creates the correct number of registers", registers.size(), 1);
+        assertEquals("It creates the correct number of customers", customers.size(), 2);
     }
 }

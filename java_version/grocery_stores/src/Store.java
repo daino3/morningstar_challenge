@@ -23,16 +23,6 @@ public class Store {
         return time;
     }
 
-    public void printCustomerStatus() {
-        for (int i = 0; i < customers.size(); i++) {
-            Customer customer = (Customer) customers.get(i);
-            System.out.println("Type: " + customer.type);
-            System.out.println("Items: " + customer.items);
-            System.out.println("ArrivalTime: " + customer.arrivalTime);
-            System.out.println("Been Served?: " + customer.served);
-        }
-    }
-
     public void addCustomer(Customer x) { customers.add(x);}
 
     public void addRegister(Register x) { registers.add(x);}
