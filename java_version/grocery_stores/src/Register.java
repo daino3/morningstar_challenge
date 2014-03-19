@@ -36,7 +36,6 @@ public class Register {
         if (!customers.isEmpty()) {
             for (int i = 0; i < lineLength(); i++) {
                 Customer customer = (Customer) customers.get(i);
-                System.out.println("Customer " + customer.type + " is getting in " + getSpeed() + "Type register");
             }
         }
     }

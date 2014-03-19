@@ -20,36 +20,19 @@ public class Customer implements Comparable<Customer>{
     }
 
     public void getInLine(Store store) {
+        if (type.equals("A")) {
+            Register registerA = (Register) store.shortestLine();
+            registerA.addCustomer(this);
 
-        System.out.println("Customer " + type + " is getting in line with " + items + " items ");
-
-        int customerType = 0;
-
-        if (type == "A") {
-            customerType = 1;
-        }else {
-            customerType = 2;
-        }
-
-        switch (customerType) {
-            case 1:
-                Register registerA = (Register) store.shortestLine();
-                registerA.addCustomer(this);
-                System.out.println("GEE THIS LINE LOOKS SWELLL!!");
-                registerA.printCustomers();
-                break;
-            case 2:
-                Register registerB = (Register) store.lastCustomerWithLeastItems();
-                registerB.addCustomer(this);
-                System.out.println("GEE THIS LINE LOOKS GOOOOD TOO!!");
-                registerB.printCustomers();
-                break;
+        } else if (type.equals("B")) {
+            Register registerB = (Register) store.lastCustomerWithLeastItems();
+            registerB.addCustomer(this);
         }
     }
 
     @Override
     public int compareTo(Customer customer) {
-        int value = type.compareTo(customer.type);
-        return (value == 0) ? Double.compare(items, customer.items) : value;
+        int value = Double.compare(items, customer.items);
+        return (value == 0) ? type.compareTo(customer.type) : value;
     }
 }

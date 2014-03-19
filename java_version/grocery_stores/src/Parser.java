@@ -69,9 +69,10 @@ public class Parser {
             String customerData = instructions.get(i);
             String[] splitData = customerData.split("\\s+");
 
-            String type = splitData[0];
+            String type     = splitData[0];
             int arrivalTime = Integer.parseInt(splitData[1]);
             double items    = Double.parseDouble(splitData[2]);
+
             Customer customer = new Customer(type, arrivalTime, items);
             customers.add(customer);
         }

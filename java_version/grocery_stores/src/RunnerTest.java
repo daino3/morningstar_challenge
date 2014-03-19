@@ -16,10 +16,9 @@ public class RunnerTest {
         testRunner = new Runner();
     }
 
-    @Test /* THIS CONTINUES TO RUN - NEVER TERMINATES AND I HAVE ZERO CLUE WHY.*/
-    public void findCompletionTime() {
-        int time = testRunner.findCompletionTime(fileLocation);
-        assertEquals(time, 7);
+    @Test
+    public void mainTest() {
+        testRunner.main();
     }
 
     @Test

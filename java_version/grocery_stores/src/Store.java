@@ -17,15 +17,17 @@ public class Store {
     public int main() {
         while (!allCustomersServed()) {
             placeCustomersInLine();
+
+            /* FOR VISUAL PLAY-BY-PLAY
+            System.out.println("==============");
+            System.out.println("TIME : " + time);
+            printLines();*/
+
             serviceCustomers();
 
-            System.out.println("TIME" + time);
-            printLines();
-            System.out.println("==============");
-
             time++;
+
         }
-        /*System.out.println("TIME " + time);*/
         return time;
     }
 
@@ -49,7 +51,7 @@ public class Store {
 
         for (int i = 0; i < numReg; i++) {
             Register register = (Register) registers.get(i);
-            System.out.println("Register " + i );
+            System.out.println("Register " + (i+1) );
 
             if (!register.isEmpty()) {
                 for(int c = 0; c < register.lineLength(); c++) {
@@ -64,10 +66,10 @@ public class Store {
 
     public void placeCustomersInLine() {
         ArrayList arrivals = findLineArrivals();
-        List sortedArrivals = sortArrivals(arrivals);
-        int numArrivals = sortedArrivals.size();
 
-        System.out.println("NUMBER OF ARRIVALS : "+ numArrivals);
+        List sortedArrivals = sortArrivals(arrivals);
+
+        int numArrivals = sortedArrivals.size();
 
         for (int i = 0; i < numArrivals; i++) {
             Customer customer = (Customer) sortedArrivals.get(i);
@@ -81,10 +83,6 @@ public class Store {
 
         while (it.hasNext()) {
             Customer customer = (Customer) it.next();
-
-            boolean rightNow = customer.arrivalTime == time;
-            System.out.println("TIME IS : " + time + " BUT CUSTOMER ARRIVAL TIME IS : " + customer.arrivalTime + "(THEY ARE EQUAL : " + rightNow + " )");
-
             if (customer.arrivalTime == time) newArrivals.add(customer);
         }
         return newArrivals;
@@ -102,7 +100,10 @@ public class Store {
 
         while(it.hasNext()) {
             Register register = (Register) it.next();
-            if (register.lineLength() < minimumLine.lineLength()) minimumLine = register;
+
+            if (register.lineLength() < minimumLine.lineLength()) {
+                minimumLine = register;
+            }
         }
         return minimumLine;
     }
