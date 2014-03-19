@@ -36,6 +36,7 @@ public class ParserTest {
         test.parse();
         test.createRegisters();
         Register results = test.registers.get(0);
+
         assertEquals(0.5, results.getSpeed(), 1.0);
     }
 
@@ -47,12 +48,12 @@ public class ParserTest {
         Customer customerA = test.customers.get(0);
         assertEquals("It creates the first customer with the correct type", customerA.type, "A");
         assertEquals(customerA.items, 2.0, 0.0);
-        assertEquals("It creates the first customer with the correct arrival time", customerA.arrivalTime, 1);
+        assertEquals(customerA.arrivalTime, 1);
 
         Customer customerB = test.customers.get(1);
         assertEquals("It creates the second customer with the correct type", customerB.type, "A");
         assertEquals(customerB.items, 1.0, 0.0);
-        assertEquals("It creates the second customer with the correct arrival time", customerB.arrivalTime, 2);
+        assertEquals(customerB.arrivalTime, 2);
     }
 
     @Test
@@ -60,7 +61,7 @@ public class ParserTest {
         Store store = test.main();
         ArrayList<Register> registers = store.registers;
         ArrayList<Customer> customers = store.customers;
-        assertEquals("It creates the correct number of registers", registers.size(), 1);
-        assertEquals("It creates the correct number of customers", customers.size(), 2);
+        assertEquals(registers.size(), 1);
+        assertEquals(customers.size(), 2);
     }
 }

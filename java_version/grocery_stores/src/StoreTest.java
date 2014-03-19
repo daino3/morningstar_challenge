@@ -14,7 +14,7 @@ public class StoreTest {
     public ArrayList registerList;
 
     @Before public void initialize() {
-        customerTest = new Customer("A", 4, 1);
+        customerTest = new Customer("A", 1, 4.0);
         customerList = new ArrayList();
         customerList.add(customerTest);
 
@@ -52,6 +52,7 @@ public class StoreTest {
         /*--------- CREATE STORE --------*/
         Store store = new Store(registers, customers);
         int elapsedTime = store.main();
+
         assertEquals("Example 1 returns the correct time", 7, elapsedTime);
     }
 
@@ -172,7 +173,7 @@ public class StoreTest {
         Store store = new Store(registers, customers);
         int elapsedTime = store.main();
 
-        assertEquals("Example 5 returns the correct time", 9, elapsedTime);
+        assertEquals("Example 5 returns the correct time", 11, elapsedTime);
     }
 
     /* ============= END OF APPLICATION TESTS =============== */
@@ -191,7 +192,7 @@ public class StoreTest {
         Customer anotherCustomer = new Customer("B", 5, 3);
         storeTest.addCustomer(anotherCustomer);
         storeTest.time = 3;
-        ArrayList arrivals = storeTest.findLineArrivals();
+        ArrayList<Customer> arrivals = storeTest.findLineArrivals();
         assertEquals("Returns false if there are un-served customers", arrivals.get(0), anotherCustomer);
     }
 

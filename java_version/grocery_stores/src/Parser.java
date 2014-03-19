@@ -72,7 +72,7 @@ public class Parser {
             String type = splitData[0];
             int arrivalTime = Integer.parseInt(splitData[1]);
             double items    = Double.parseDouble(splitData[2]);
-            Customer customer = new Customer(type, items, arrivalTime);
+            Customer customer = new Customer(type, arrivalTime, items);
             customers.add(customer);
         }
     }

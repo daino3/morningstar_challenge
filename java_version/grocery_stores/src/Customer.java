@@ -5,10 +5,10 @@ public class Customer implements Comparable<Customer>{
     public int arrivalTime;
     public boolean served;
 
-    public Customer(String customerType, double numItems, int timeArrived) {
-      type   = customerType;
-      items  = numItems;
-      arrivalTime = timeArrived;
+    public Customer(String type, int arrivalTime, double items) {
+      this.type   = type;
+      this.items  = items;
+      this.arrivalTime = arrivalTime;
       served = false;
     }
 
@@ -20,21 +20,29 @@ public class Customer implements Comparable<Customer>{
     }
 
     public void getInLine(Store store) {
-        Register register;
+
+        System.out.println("Customer " + type + " is getting in line with " + items + " items ");
 
         int customerType = 0;
 
-        if (type == "A") customerType = 1;
-        if (type == "B") customerType = 2;
+        if (type == "A") {
+            customerType = 1;
+        }else {
+            customerType = 2;
+        }
 
         switch (customerType) {
             case 1:
-                register = (Register) store.shortestLine();
-                register.addCustomer(this);
+                Register registerA = (Register) store.shortestLine();
+                registerA.addCustomer(this);
+                System.out.println("GEE THIS LINE LOOKS SWELLL!!");
+                registerA.printCustomers();
                 break;
             case 2:
-                register = (Register) store.lastCustomerWithLeastItems();
-                register.addCustomer(this);
+                Register registerB = (Register) store.lastCustomerWithLeastItems();
+                registerB.addCustomer(this);
+                System.out.println("GEE THIS LINE LOOKS GOOOOD TOO!!");
+                registerB.printCustomers();
                 break;
         }
     }

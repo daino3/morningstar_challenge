@@ -11,7 +11,7 @@ public class CustomerTest {
 
     @Before
     public void initialize() {
-        test = new Customer("A", 5.0, 1);
+        test = new Customer("A", 1, 5.0);
     }
 
     @Test

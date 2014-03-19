@@ -3,10 +3,11 @@ import java.util.List;
 
 public class Register {
     private double speed;
-    public List customers = new ArrayList();
+    public ArrayList customers;
 
     public Register(double regSpeed) {
-      speed = regSpeed;
+      this.speed     = regSpeed;
+      this.customers = new ArrayList();
     }
 
     public double getSpeed() { return speed; }
@@ -28,6 +29,15 @@ public class Register {
         } else {
             Customer lastCustomer = (Customer) customers.get(customers.size() - 1);
             return lastCustomer.items;
+        }
+    }
+
+    public void printCustomers() {
+        if (!customers.isEmpty()) {
+            for (int i = 0; i < lineLength(); i++) {
+                Customer customer = (Customer) customers.get(i);
+                System.out.println("Customer " + customer.type + " is getting in " + getSpeed() + "Type register");
+            }
         }
     }
 

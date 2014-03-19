@@ -18,8 +18,14 @@ public class Store {
         while (!allCustomersServed()) {
             placeCustomersInLine();
             serviceCustomers();
+
+            System.out.println("TIME" + time);
+            printLines();
+            System.out.println("==============");
+
             time++;
         }
+        /*System.out.println("TIME " + time);*/
         return time;
     }
 
@@ -38,10 +44,32 @@ public class Store {
         return flag;
     }
 
+    public void printLines() {
+        int numReg = registers.size();
+
+        for (int i = 0; i < numReg; i++) {
+            Register register = (Register) registers.get(i);
+            System.out.println("Register " + i );
+
+            if (!register.isEmpty()) {
+                for(int c = 0; c < register.lineLength(); c++) {
+                    Customer customer = (Customer) register.customers.get(c);
+                    System.out.println("Customer "+ customer.type + " " + " with " + customer.items + " items");
+                }
+            }else {
+                System.out.println("EMPTY");
+            }
+        }
+    }
+
     public void placeCustomersInLine() {
         ArrayList arrivals = findLineArrivals();
         List sortedArrivals = sortArrivals(arrivals);
-        for (int i = 0; i < sortedArrivals.size(); i++) {
+        int numArrivals = sortedArrivals.size();
+
+        System.out.println("NUMBER OF ARRIVALS : "+ numArrivals);
+
+        for (int i = 0; i < numArrivals; i++) {
             Customer customer = (Customer) sortedArrivals.get(i);
             customer.getInLine(this);
         }
@@ -53,6 +81,10 @@ public class Store {
 
         while (it.hasNext()) {
             Customer customer = (Customer) it.next();
+
+            boolean rightNow = customer.arrivalTime == time;
+            System.out.println("TIME IS : " + time + " BUT CUSTOMER ARRIVAL TIME IS : " + customer.arrivalTime + "(THEY ARE EQUAL : " + rightNow + " )");
+
             if (customer.arrivalTime == time) newArrivals.add(customer);
         }
         return newArrivals;
