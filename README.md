@@ -5,6 +5,35 @@ Note from author: Implemenation done in both ruby and java. Ruby version was to
 get logic and structure to be translated into Java-based version (first time
 with Java).
 
+### To Run Java Version:
+
+Run RunnerTest file in Eclipse or Intellij.
+
+### Java Solution Overview:
+
+Customer, Register and Store classes are the main objects. Store is instantiated
+with ArrayLists of registers and customers. Store#main calculates the run time
+of servicing all customers.
+
+CustomerSorter, Parser and Runner are leveraged for their specific tasks -
+sorting customers, parsing the text files and running the application,
+respectively.
+
+### To Run Ruby Version:
+
+From the command line run, change into the ruby_version directory and run:
+```
+ruby run.rb
+```
+
+### Ruby Solution Overview:
+
+The Ruby code was hurried to simply get the objects and logic down so that I
+could convert the code into Java. The solution has 4 classes: Customer,
+Register, Store and Parser. The Ruby code is definitely more elegant A) because
+I'm more familiar with Ruby and B) because enumerable methods take a lot of the
+complication of this exercise. THERE IS NO TESTING FOR THIS VERSION HOWEVER._
+
 ### Overview:
 You are to write a program to implement a grocery store / cashier line simulation. This program should read input from a file, and print the resulting score to the console. (The program should be a console-only program.) The program should take a single command line parameter, the name of the input file.
 
@@ -13,6 +42,7 @@ Customers in a grocery store arrive at a set of registers to check out. Each reg
 One of the most important criteria for a successful solution is that it correctly implements the problem to be solved. This will be determined by both code inspection and acceptance testing using the 5 examples in this problem as well as additional test cases not provided as part of the problem. 
 
 We will be considering your overall approach to the problem and your programming style. This assignment is an opportunity to show off your domain modeling, OO, tests and design skills to produce an elegant, readable and testable solution. Please do use what you would consider best practice in developing your solution.
+
 ### Problem Details:
 Problem Details: 
 
@@ -34,7 +64,6 @@ b. Customer Type B looks at the last customer in each line, and always chooses t
 7) Customers just finishing checking out do not count as being in line (for either kind of Customer). 
 
 8) If two or more customers arrive at the same time, those with fewer items choose registers before those with more, and if they have the same number of items then type A's choose before type B's.
-
 
 ### Input Format: 
 
